@@ -1,0 +1,65 @@
+/*!
+
+=========================================================
+* Argon Dashboard 2 Tailwind - v1.0.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-dashboard-tailwind
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+
+* Coded by www.creative-tim.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active {
+    @apply bg-blue-500/13  rounded-lg font-semibold text-slate-700;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.animated.faster {
+    -webkit-animation-duration: 500ms;
+    animation-duration: 500ms;
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+.fadeOut {
+    -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
