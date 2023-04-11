@@ -9,7 +9,7 @@
             <div
                 class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent"
             >
-                <h6 class="dark:text-white">Hai {{ $nama->nama }}, ini menu awal lhooo 😎</h6>
+                <h6 class="dark:text-white flex justify-center pb-2">Hai {{ $nama->nama }}, Selamat datang di dashboard 😎</h6>
             </div>
             
         </div>

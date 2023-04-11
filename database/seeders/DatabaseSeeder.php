@@ -60,6 +60,20 @@ class DatabaseSeeder extends Seeder
         //     'role_id' => '1',
         // ]);
 
+        User::create([
+            'nama' => 'pungky',
+            'username' => 'pungky',
+            'password' => bcrypt('aaaaaa'),
+            'role_id' => '6',
+        ]);
+
+        User::create([
+            'nama' => 'wahyu',
+            'username' => 'wahyu',
+            'password' => bcrypt('aaaaaa'),
+            'role_id' => '6',
+        ]);
+
         // Role::create([
         //     'nama' => 'admin'
         // ]);
@@ -80,45 +94,45 @@ class DatabaseSeeder extends Seeder
         //     'nama' => 'bast'
         // ]);
 
-        Sales::create([
-            'nik' => '11691',
-            'nama' => 'WAHYU'
-        ]);
-        Sales::create([
-            'nik' => '04066',
-            'nama' => 'SUYONO'
-        ]);
-        Sales::create([
-            'nik' => '11111',
-            'nama' => 'AGI'
-        ]);
-        Sales::create([
-            'nik' => '12386',
-            'nama' => 'WINARNO'
-        ]);
-        Sales::create([
-            'nik' => '00011',
-            'nama' => 'LENI'
-        ]);
-        Sales::create([
-            'nik' => '00022',
-            'nama' => 'PUNGKY'
-        ]);
-        Sales::create([
-            'nik' => '00033',
-            'nama' => 'WIDI'
-        ]);
-        Sales::create([
-            'nik' => '00044',
-            'nama' => 'PUTRI'
-        ]);
-        Sales::create([
-            'nik' => '08235',
-            'nama' => 'DEDY'
-        ]);
-        Sales::create([
-            'nik' => '00055',
-            'nama' => 'GIAR'
-        ]);
+        // Sales::create([
+        //     'nik' => '11691',
+        //     'nama' => 'WAHYU'
+        // ]);
+        // Sales::create([
+        //     'nik' => '04066',
+        //     'nama' => 'SUYONO'
+        // ]);
+        // Sales::create([
+        //     'nik' => '11111',
+        //     'nama' => 'AGI'
+        // ]);
+        // Sales::create([
+        //     'nik' => '12386',
+        //     'nama' => 'WINARNO'
+        // ]);
+        // Sales::create([
+        //     'nik' => '00011',
+        //     'nama' => 'LENI'
+        // ]);
+        // Sales::create([
+        //     'nik' => '00022',
+        //     'nama' => 'PUNGKY'
+        // ]);
+        // Sales::create([
+        //     'nik' => '00033',
+        //     'nama' => 'WIDI'
+        // ]);
+        // Sales::create([
+        //     'nik' => '00044',
+        //     'nama' => 'PUTRI'
+        // ]);
+        // Sales::create([
+        //     'nik' => '08235',
+        //     'nama' => 'DEDY'
+        // ]);
+        // Sales::create([
+        //     'nik' => '00055',
+        //     'nama' => 'GIAR'
+        // ]);
     }
 }

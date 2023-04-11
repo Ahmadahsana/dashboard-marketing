@@ -40,5 +40,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('bast', function (User $user) {
             return auth()->user()->role_id == 4;
         });
+
+        Gate::define('sales', function (User $user) {
+            return auth()->user()->role_id == 6;
+        });
     }
 }

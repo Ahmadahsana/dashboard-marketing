@@ -5,6 +5,7 @@ use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MonitorController;
 use App\Http\Controllers\PoiController;
+use App\Http\Controllers\SalesTaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,3 +43,8 @@ Route::get('/list_inquiry', [InquiryController::class, 'index'])->middleware('au
 Route::get('/tambah_inquiry', [InquiryController::class, 'create'])->middleware('auth');
 Route::post('/simpan_inquiry', [InquiryController::class, 'store'])->middleware('auth');
 Route::post('/insert_inquiry_bulk', [InquiryController::class, 'bulk_insert'])->middleware('auth');
+
+// task sales
+Route::get('/task_sales', [SalesTaskController::class, 'index'])->middleware('auth');
+Route::get('/tambah_task_sales', [SalesTaskController::class, 'create'])->middleware('auth');
+Route::post('/tambah_task_sales', [SalesTaskController::class, 'store'])->middleware('auth');

@@ -10,7 +10,7 @@
             <div
                 class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent"
             >
-            <a  class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all bg-transparent rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 hover:shadow-xs active:opacity-85 hover:-translate-y-px tracking-tight-rem bg-x-25" href="/tambah_inquiry"> <i class="fas fa-plus"> </i>&nbsp;&nbsp;Tambah Inquiry</a>
+            <a  class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all bg-transparent rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 hover:shadow-xs active:opacity-85 hover:-translate-y-px tracking-tight-rem bg-x-25" href="/tambah_task_sales"> <i class="fas fa-plus"> </i>&nbsp;&nbsp;Tambah Baru</a>
             </div>
                 @if (session()->has('success'))
                 
@@ -38,7 +38,7 @@
             <div
                 class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent"
             >
-                <h6 class="dark:text-white">List Inquiry</h6>
+                <h6 class="dark:text-white">Task sales</h6>
             </div>
             <div class="flex-auto px-0 pt-0 pb-2">
                 <div class="p-0 overflow-x-auto">
@@ -55,37 +55,37 @@
                                 <th
                                     class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
-                                    Judul
+                                    Nama
                                 </th>
                                 <th
                                     class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
-                                    Sales
+                                    Wilayah
                                 </th>
                                 <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
-                                    Jenis instansi
+                                    Mesin
                                 </th>
                                 <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
-                                    Tanggal prospek
+                                    Qty
                                 </th>
                                 <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
-                                    Alamat instansi
+                                    Pagu
                                 </th>
                                 <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
-                                    status
+                                    Keterangan
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($listInquiry as $Inquiry)
+                            @foreach ($task_sales as $task)
                                 
                             
                             <tr>
@@ -108,7 +108,7 @@
                                             <h6
                                                 class="mb-0 text-sm leading-normal dark:text-white"
                                             >
-                                                {{ $Inquiry->judul }}
+                                                {{ $task->user_id }}
                                             </h6>
                                         </div>
                                     </div>
@@ -119,7 +119,7 @@
                                     <p
                                         class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80"
                                     >
-                                        {{ $Inquiry->sales }}
+                                        {{ $task->wilayah }}
                                     </p>
                                 </td>
                                 <td
@@ -127,7 +127,7 @@
                                 >
                                         <span
                                         class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
-                                        >{{ $Inquiry->jenis_instansi }}</span
+                                        >{{ $task->mesin }}</span
                                     >
                                 </td>
                                 <td
@@ -135,7 +135,7 @@
                                 >
                                     <span
                                         class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
-                                        >{{ $Inquiry->tgl_prospek }}</span
+                                        >{{ $task->qty }}</span
                                     >
                                 </td>
                                 <td
@@ -143,15 +143,15 @@
                                 >
                                     <span
                                         class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
-                                        >{{ $Inquiry->alamat_instansi }}</span
+                                        >{{ $task->pagu }}</span
                                     >
                                 </td>
                                 <td
                                     class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
                                 >
-                                        <span
-                                        class=" @if($Inquiry->status == 'kontrak') bg-blue-600 text-white @elseif($Inquiry->status == 'deal') bg-teal-600 text-white @elseif($Inquiry->status == 'nego') bg-orange-300 text-orange-900 @endif px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none "
-                                        >{{ $Inquiry->status }}</span
+                                    <span
+                                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
+                                        >{{ $task->keterangan }}</span
                                     >
                                 </td>
                                 <td class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent" >

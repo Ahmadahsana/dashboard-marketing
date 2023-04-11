@@ -6,6 +6,7 @@ use App\Models\Inquiry;
 use App\Models\Katalog;
 use Illuminate\Http\Request;
 use App\Models\Oracle_Database;
+use App\Models\Sales_task;
 
 class MonitorController extends Controller
 {
@@ -31,10 +32,13 @@ class MonitorController extends Controller
 
         $data_inquiry = Inquiry::all();
 
+        $data_sales = Sales_task::all();
+
         return view('monitor.monitor', [
             'list_poi' => $data_poi,
             'list_katalog' => $data_katalog,
-            'list_inquiry' => $data_inquiry
+            'list_inquiry' => $data_inquiry,
+            'list_task' => $data_sales
         ]);
     }
 }

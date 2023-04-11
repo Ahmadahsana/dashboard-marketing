@@ -79,7 +79,7 @@
               <div class="absolute top-0 right-0 flex-col justify-center hidden w-6/12 h-full max-w-full px-3 pr-0 my-auto text-center flex-0 lg:flex">
                 <div class="relative flex flex-col justify-center h-full bg-cover px-24 m-4 overflow-hidden  rounded-xl " style="background-image: url('{{ url('dashboard/build/assets/img/curved-images/curved8.jpg') }}')">
                   <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-blue-500 to-violet-500 opacity-40"></span>
-                  <h4 class="z-20 mt-12 font-bold text-white">"Kata kata hari ini lurrr. . "</h4>
+                  <h4 class="z-20 mt-12 font-bold text-white">"Bismillah "</h4>
                   <p class="z-20 text-white ">The more effortless the writing looks, the more effort the writer actually put into the process.</p>
                 </div>
               </div>

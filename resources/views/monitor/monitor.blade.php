@@ -59,7 +59,7 @@
                                                 {{ $katalog->sales }}
                                             </p>
                                         </div>
-                                        <div>
+                                        <div class="text-end">
                                             <div class="flex justify-end text-center" >
                                                 <p class="py-1 px-3 @if($katalog->status == 'nego') bg-orange-300 text-orange-900 @elseif($katalog->status == 'kontrak') bg-blue-600 text-white @elseif($katalog->status == 'deal') bg-teal-600 text-white  @endif text-center text-sm rounded-lg " >
                                                     {{ $katalog->status }}
@@ -94,7 +94,7 @@
                                                 {{ $katalog->sales }}
                                             </p>
                                         </div>
-                                        <div>
+                                        <div class="text-end">
                                             
                                             <div class="flex justify-end text-center" >
                                                 <p class="py-1 px-3 @if($katalog->status == 'nego') bg-orange-300 text-orange-900 @elseif($katalog->status == 'kontrak') bg-blue-600 text-white @elseif($katalog->status == 'deal') bg-teal-600 text-white  @endif text-center text-sm rounded-lg " >
@@ -130,17 +130,223 @@
                 <div
                     class="flex justify-center bg-white w-full basis-3/10 mx-2 rounded-md shadow-md"
                 >
-                    <div class="block rounded-lg text-center">
-                        <div class="border-b-2 border-neutral-100 py-3 px-6">
-                            <span class="font-bold text-lg">BAST</span>
-                        </div>
-                        <div class="p-6">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Tenetur quae earum possimus repellat!
-                            Dignissimos ipsam odit, necessitatibus aliquid porro
-                            accusamus? Vero error odit cupiditate minus ex
-                        </div>
+                <div class="block rounded-md h-full overflow-hidden pb-2 w-full" >
+                    <div
+                        class="border-b-2 border-neutral-100 py-3 px-6 text-center h-1/7"
+                    >
+                        <span class="font-bold text-lg">BAST</span>
                     </div>
+                    <div class="overflow-y-hidden h-6/7 relative">
+                        <ul class="p-4 w-full">
+                            <li class="bg-slate-200 p-2 mb-2 rounded-sm">
+                                <div class="mb-1 text-base font-semibold">
+                                    NO POI : 09090/KTT/2022
+                                    <span class="ml-3 font-thin text-base"
+                                        >( Lorem ipsum dolor sit amet
+                                        consectetur adipisicing elit. Ex,
+                                        qui! )</span
+                                    >
+                                </div>
+                                <div class="grid grid-cols-6 gap-1">
+                                    <div
+                                        class="bg-teal-600 text-white rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center">
+                                            Kontrak
+                                        </div>
+                                        <div class="text-center text-sm">
+                                            8 April 2023
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-teal-600 text-white rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center">Kirim</div>
+                                        <div class="text-center text-sm">
+                                            17 agst 1945
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-orange-300 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center">
+                                            Sampai
+                                        </div>
+                                        <div
+                                            class="text-center text-sm"
+                                        ></div>
+                                    </div>
+                                    <div
+                                        class="bg-gray-300 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center">
+                                            Pasang
+                                        </div>
+                                        <div
+                                            class="text-center text-sm"
+                                        ></div>
+                                    </div>
+                                    <div
+                                        class="bg-gray-300 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center">
+                                            Uji coba
+                                        </div>
+                                        <div
+                                            class="text-center text-sm"
+                                        ></div>
+                                    </div>
+                                    <div
+                                        class="bg-gray-300 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center">BAST</div>
+                                        <div
+                                            class="text-center text-sm"
+                                        ></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="bg-slate-200 p-2 mb-2 rounded-sm">
+                                <div class="mb-1 text-base font-semibold">
+                                    NO POI : 09090/KTT/2022
+                                </div>
+                                <div class="grid grid-cols-6 gap-1">
+                                    <div
+                                        class="bg-teal-600 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center text-white">
+                                            Kontrak
+                                        </div>
+                                        <div
+                                            class="text-center text-sm text-white"
+                                        >
+                                            8 April 2023
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-gray-300 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center">Kirim</div>
+                                        <div
+                                            class="text-center text-sm"
+                                        ></div>
+                                    </div>
+                                    <div
+                                        class="bg-gray-300 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center">
+                                            Sampai
+                                        </div>
+                                        <div
+                                            class="text-center text-sm"
+                                        ></div>
+                                    </div>
+                                    <div
+                                        class="bg-gray-300 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center">
+                                            Pasang
+                                        </div>
+                                        <div
+                                            class="text-center text-sm"
+                                        ></div>
+                                    </div>
+                                    <div
+                                        class="bg-gray-300 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center">
+                                            Uji coba
+                                        </div>
+                                        <div
+                                            class="text-center text-sm"
+                                        ></div>
+                                    </div>
+                                    <div
+                                        class="bg-gray-300 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center">BAST</div>
+                                        <div
+                                            class="text-center text-sm"
+                                        ></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="bg-slate-200 p-2 mb-2 rounded-sm">
+                                <div class="mb-1 text-base font-semibold">
+                                    NO POI : 09090/KTT/2022
+                                </div>
+                                <div class="grid grid-cols-6 gap-1">
+                                    <div
+                                        class="bg-teal-600 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center text-white">
+                                            Kontrak
+                                        </div>
+                                        <div
+                                            class="text-center text-sm text-white"
+                                        >
+                                            8 April 2023
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-teal-600 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center text-white">
+                                            Kirim
+                                        </div>
+                                        <div
+                                            class="text-center text-sm text-white"
+                                        >
+                                            16 Jan 2024
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-teal-600 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center text-white">
+                                            Sampai
+                                        </div>
+                                        <div
+                                            class="text-center text-sm text-white"
+                                        >
+                                            16 Jan 2024
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-teal-600 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center text-white">
+                                            Pasang
+                                        </div>
+                                        <div
+                                            class="text-center text-sm text-white"
+                                        >
+                                            16 Jan 2024
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-gray-300 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center">
+                                            Uji coba
+                                        </div>
+                                        <div
+                                            class="text-center text-sm"
+                                        ></div>
+                                    </div>
+                                    <div
+                                        class="bg-gray-300 rounded-md overflow-hidden"
+                                    >
+                                        <div class="text-center">BAST</div>
+                                        <div
+                                            class="text-center text-sm"
+                                        ></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 </div>
             </div>
             <div class="flex flex-row h-1/2 pt-2">
@@ -229,18 +435,49 @@
                     </div>
                 </div>
 
-                <div
-                    class="bg-white w-full basis-4/10 mx-2 rounded-md shadow-md"
-                >
-                    <div class="block rounded-lg text-center">
-                        <div class="border-b-2 border-neutral-100 py-3 px-6">
+                <div class="bg-white w-full basis-4/10 mx-2 rounded-md shadow-md" >
+                    <div class="block rounded-md h-full overflow-hidden pb-2 w-full" >
+                        <div class="border-b-2 border-neutral-100 py-3 px-6 text-center h-1/7" >
                             <span class="font-bold text-lg">Sales</span>
                         </div>
-                        <div class="p-6">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Tenetur quae earum possimus repellat!
-                            Dignissimos ipsam odit, necessitatibus aliquid porro
-                            accusamus? Vero error odit cupiditate minus ex
+                        <div class="overflow-y-hidden h-6/7 relative">
+                            <ul
+                                class="p-4 absolute w-full animate-naiklambatbanget grid grid-cols-2 gap-2"
+                            >
+                                @foreach ($list_task as $sales)
+                                
+                                <li
+                                    class="bg-slate-200 rounded-sm mb-2 mr-2 shadow-sm relative flex overflow-hidden"
+                                >
+                                    <div class="flex flex-row">
+                                        <div
+                                            class="bg-teal-500 text-white font-semibold basis-1/5 flex justify-center items-center rounded-e-xl"
+                                        >
+                                            {{ $sales->user_id }}
+                                        </div>
+                                        <div
+                                            class="basis-4/5 ml-2 p-2 relative"
+                                        >
+                                            <div class="text-lg font-semibold">
+                                                {{ $sales->mesin }}
+                                                (QTY {{ $sales->qty }})
+                                            </div>
+                                            <div class="text-sm">
+                                                {{ $sales->wilayah }}
+                                            </div>
+                                            <div class="text-blue-600">
+                                                Rp. {{ $sales->pagu }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="absolute bottom-0 right-0 p-1 m-1 rounded-lg bg-slate-700 text-white text-sm"
+                                    >
+                                        {{ $sales->kontrak }}
+                                    </div>
+                                </li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
                 </div>
