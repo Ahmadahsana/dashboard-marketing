@@ -28,4 +28,11 @@ class PoiController extends Controller
 
         return collect($gas)->sortDesc()->take(20);
     }
+
+    public function cari_poi(Request $request)
+    {
+        $query = "SELECT * FROM TBL_POI_HEADER tph WHERE tph.NO_POI LIKE '%$request->poi%' AND rownum <= 10";
+        $hasil = Oracle_Database::get($query);
+        return $hasil;
+    }
 }

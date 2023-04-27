@@ -118,4 +118,9 @@ class KatalogController extends Controller
 
         return redirect()->back();
     }
+
+    public function video()
+    {
+        return view('dashboard.video.video');
+    }
 }

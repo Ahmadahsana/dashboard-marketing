@@ -9,7 +9,7 @@ navbar-scroll="false"
 >
     <nav>
         <!-- breadcrumb -->
-        <ol
+        {{-- <ol
             class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16"
         >
             <li class="text-sm leading-normal">
@@ -28,7 +28,7 @@ navbar-scroll="false"
         </ol>
         <h6 class="mb-0 font-bold text-white capitalize">
             Tables
-        </h6>
+        </h6> --}}
     </nav>
 
     <div

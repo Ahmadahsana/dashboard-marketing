@@ -8,45 +8,52 @@
             <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
               
              
-             <form action="/tambah_task_sales" method="post">
+             <form action="/edit_task_sales" method="post">
                 @csrf
+              <input type="hidden" name="id" value="{{ $task->id }}">
               <div class="flex-auto p-6">
-                <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">Tambah Task</p>
+                <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">Edit Task</p>
                 <div class="flex flex-wrap -mx-3">
                   
                   <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                     <div class="mb-4">
                       <label for="user" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">User</label>
-                      <input type="text" name="user" readonly value="{{ $nama_sales }}" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                      <input type="text" name="user" readonly value="{{ $task->user_id }}" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                     </div>
                   </div>
                   
                   <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                     <div class="mb-4">
                       <label for="judul" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Judul</label>
-                      <input type="text" name="judul" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                      <input type="text" name="judul" value="{{ $task->judul }}" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                     </div>
                   </div>
 
                   <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                     <div class="mb-4">
                       <label for="deadline" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Deadline</label>
-                      <input type="date" name="deadline" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                      <input type="date" name="deadline" value="{{ $task->deadline }}" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                     </div>
                   </div>
 
-                  {{-- <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+                  <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                     <div class="mb-4">
                       <label for="status" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Status</label>
-                      <input type="text" name="status" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                      <select id="status" name="status" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
+                        <option selected disabled value="">Pilih status</option>
+                        @foreach ($status_task as $status)
+                        <option @if ($status->nama == $task->status) selected @endif>{{ $status->nama }}</option>
+                        @endforeach
+                      </select>
                     </div>
-                  </div> --}}
+                  </div>
                   
                   
                   <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
                     <div class="mb-4">
                       <label for="deskripsi" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Deskripsi</label>
-                      <textarea name="deskripsi" id="deskripsi"  rows="4" placeholder="" class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"></textarea>
+                      <textarea name="deskripsi" id="deskripsi"  rows="4" placeholder="" class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                      >{{ $task->deskripsi }}</textarea>
                     </div>
                   </div>
                   
@@ -91,35 +98,5 @@
 
 
 
-<script>
-    const modal = document.querySelector('.main-modal');
-    const closeButton = document.querySelectorAll('.modal-close');
 
-    const modalClose = () => {
-        modal.classList.remove('fadeIn');
-        modal.classList.add('fadeOut');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 500);
-    }
-
-    const openModal = () => {
-        modal.classList.remove('fadeOut');
-        modal.classList.add('fadeIn');
-        modal.style.display = 'flex';
-    }
-
-    for (let i = 0; i < closeButton.length; i++) {
-
-        const elements = closeButton[i];
-
-        elements.onclick = (e) => modalClose();
-
-        modal.style.display = 'none';
-
-        window.onclick = function (event) {
-            if (event.target == modal) modalClose();
-        }
-    }
-</script>
 @endsection

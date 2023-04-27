@@ -5,12 +5,12 @@
 <div class="flex flex-wrap -mx-3">
     <div class="flex-none w-full max-w-full px-3">
         <div
-            class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border"
+            class="overflow-hidden relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border"
         >
             <div
                 class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent"
             >
-            <a  class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all bg-transparent rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 hover:shadow-xs active:opacity-85 hover:-translate-y-px tracking-tight-rem bg-x-25" href="/tambah_task_sales"> <i class="fas fa-plus"> </i>&nbsp;&nbsp;Tambah Baru</a>
+            <a  class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all bg-transparent rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 hover:shadow-xs active:opacity-85 hover:-translate-y-px tracking-tight-rem bg-x-25" href="/tambah_budget"> <i class="fas fa-plus"> </i>&nbsp;&nbsp;Tambah Baru</a>
             </div>
                 @if (session()->has('success'))
                 
@@ -80,7 +80,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($task_sales as $task)
+                            
                                 
                             
                             <tr>
@@ -89,7 +89,7 @@
                                 >
                                     <span
                                         class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
-                                        >{{ $loop->iteration }}</span
+                                        >1</span
                                     >
                                 </td>
                                 <td
@@ -103,7 +103,7 @@
                                             <h6
                                                 class="mb-0 text-sm leading-normal dark:text-white"
                                             >
-                                                {{ $task->user_id }}
+                                                sd
                                             </h6>
                                         </div>
                                     </div>
@@ -114,14 +114,14 @@
                                     <p
                                         class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80"
                                     >
-                                        {{ $task->judul }}
+                                        gfdg
                                     </p>
                                 </td>
                                 <td
                                     class="p-2 text-sm leading-normal  align-middle bg-transparent border-b dark:border-white/40  shadow-transparent"
                                 >
                                         <span class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
-                                        {{ $task->deskripsi }}
+                                            gfdgfdg
                                         </span>
                                 </td>
                                 <td
@@ -129,7 +129,7 @@
                                 >
                                     <span
                                         class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
-                                        >{{ $task->deadline }}</span
+                                        >878kjh</span
                                     >
                                 </td>
                                 <td
@@ -137,11 +137,11 @@
                                 >
                                     <span
                                         class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
-                                        >{{ $task->status }}</span
+                                        >ccds</span
                                     >
                                 </td>
                                 <td class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent" >
-                                                    <a href="/edit_task_sales/{{ $task->id }}"
+                                                    <a href="/edit_task_sales"
                                                         class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-blue-400 border-2 px-3 py-1 rounded-md border-blue-700 mr-2">
                                                         Edit
                                                     </a>
@@ -149,11 +149,9 @@
                                                         class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-red-400 border-2 px-3 py-1 rounded-md border-red-600">
                                                         Hapus
                                                     </a>
-                                                    
-                                                    
                                 </td>
                             </tr>
-                            @endforeach
+                            
                            
                             
                         </tbody>
@@ -166,35 +164,5 @@
 
 
 
-<script>
-    const modal = document.querySelector('.main-modal');
-    const closeButton = document.querySelectorAll('.modal-close');
 
-    const modalClose = () => {
-        modal.classList.remove('fadeIn');
-        modal.classList.add('fadeOut');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 500);
-    }
-
-    const openModal = () => {
-        modal.classList.remove('fadeOut');
-        modal.classList.add('fadeIn');
-        modal.style.display = 'flex';
-    }
-
-    for (let i = 0; i < closeButton.length; i++) {
-
-        const elements = closeButton[i];
-
-        elements.onclick = (e) => modalClose();
-
-        modal.style.display = 'none';
-
-        window.onclick = function (event) {
-            if (event.target == modal) modalClose();
-        }
-    }
-</script>
 @endsection

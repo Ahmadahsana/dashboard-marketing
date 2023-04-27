@@ -104,7 +104,66 @@
                             >
                         </a>
                     </li>    
+                    <li class="w-full mt-4">
+                        <h6
+                            class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60"
+                        >
+                            Video
+                        </h6>
+                    </li>
+
+                    
+                    <li class="mt-0.5 w-full">
+                        <a
+                            class="py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors dark:text-white dark:opacity-80 @if (Request::is('video')) active @endif"
+                            href="/video"
+                        >
+                            <div
+                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5"
+                            >
+                                <i
+                                    class="relative top-0 text-sm leading-normal text-orange-500 ni ni-calendar-grid-58"
+                                ></i>
+                            </div>
+                            <span
+                                class="ml-1 duration-300 opacity-100 pointer-events-none ease"
+                                >Video</span
+                            >
+                        </a>
+                    </li>    
                     @endcan
+
+                    @can('katalog')
+                    
+                    <li class="w-full mt-4">
+                        <h6
+                            class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60"
+                        >
+                            Budget
+                        </h6>
+                    </li>
+
+
+                    <li class="mt-0.5 w-full">
+                        <a
+                            class="py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors dark:text-white dark:opacity-80 @if (Request::is('list_budget')) active @endif"
+                            href="/list_budget"
+                        >
+                            <div
+                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5"
+                            >
+                                <i
+                                    class="relative top-0 text-sm leading-normal text-orange-500 ni ni-calendar-grid-58"
+                                ></i>
+                            </div>
+                            <span
+                                class="ml-1 duration-300 opacity-100 pointer-events-none ease"
+                                >Cash in</span
+                            >
+                        </a>
+                    </li>    
+                    @endcan
+
                     @can('inquiry')
                     
                     <li class="w-full mt-4">
@@ -167,20 +226,18 @@
                     </li>    
                     @endcan
 
-                    @can('sales')
+                    
                     
                     <li class="w-full mt-4">
-                        <h6
-                            class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60"
-                        >
-                            Sales
+                        <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60" >
+                            Task
                         </h6>
                     </li>
 
                     
                     <li class="mt-0.5 w-full">
                         <a
-                            class="py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors dark:text-white dark:opacity-80 @if (Request::is('list_user')) active @endif"
+                            class="py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors dark:text-white dark:opacity-80 @if (Request::is('task_sales')) active @endif"
                             href="/task_sales"
                         >
                             <div
@@ -192,18 +249,15 @@
                             </div>
                             <span
                                 class="ml-1 duration-300 opacity-100 pointer-events-none ease"
-                                >Task sales</span
+                                >List Task</span
                             >
                         </a>
-                    </li>    
-                    @endcan
+                    </li> 
 
                     @can('bast')
                     
                     <li class="w-full mt-4">
-                        <h6
-                            class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60"
-                        >
+                        <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60" >
                             BAST
                         </h6>
                     </li>
@@ -211,8 +265,8 @@
                     
                     <li class="mt-0.5 w-full">
                         <a
-                            class="py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors dark:text-white dark:opacity-80 @if (Request::is('list_user')) active @endif"
-                            href="/task_sales"
+                            class="py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors dark:text-white dark:opacity-80 @if (Request::is('list_bast')) active @endif"
+                            href="/list_bast"
                         >
                             <div
                                 class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5"
@@ -221,10 +275,7 @@
                                     class="relative top-0 text-sm leading-normal text-orange-500 ni ni-calendar-grid-58"
                                 ></i>
                             </div>
-                            <span
-                                class="ml-1 duration-300 opacity-100 pointer-events-none ease"
-                                >Daftar bast</span
-                            >
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Daftar bast</span>
                         </a>
                     </li>    
                     @endcan

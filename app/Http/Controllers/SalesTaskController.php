@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sales_task;
+use App\Models\Status_task;
 use Illuminate\Http\Request;
 
 class SalesTaskController extends Controller
@@ -45,12 +46,10 @@ class SalesTaskController extends Controller
         // return $request->all();
         $data = [
             'user_id' => auth()->user()->username,
-            'wilayah' => $request->wilayah,
-            'mesin' => $request->mesin,
-            'qty' => $request->qty,
-            'pagu' => $request->pagu,
-            'kontrak' => $request->kontrak,
-            'keterangan' => $request->keterangan,
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'deadline' => $request->deadline,
+            'status' => 'Proses',
         ];
 
         Sales_task::create($data);
@@ -75,9 +74,14 @@ class SalesTaskController extends Controller
      * @param  \App\Models\Sales_task  $sales_task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sales_task $sales_task)
+    public function edit($id)
     {
-        //
+        $task_sales = Sales_task::find($id);
+        $status_task = Status_task::all();
+        return view('dashboard.sales.edit_task', [
+            'task' => $task_sales,
+            'status_task' => $status_task
+        ]);
     }
 
     /**
@@ -87,9 +91,18 @@ class SalesTaskController extends Controller
      * @param  \App\Models\Sales_task  $sales_task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sales_task $sales_task)
+    public function update(Request $request)
     {
-        //
+        // return $request;
+        $data = [
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'deadline' => $request->deadline,
+            'status' => $request->status,
+        ];
+
+        Sales_task::where('id', $request->id)->update($data);
+        return redirect('task_sales')->with('success', 'berhasil update');
     }
 
     /**

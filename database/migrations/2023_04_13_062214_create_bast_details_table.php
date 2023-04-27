@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sales_tasks', function (Blueprint $table) {
+        Schema::create('bast_details', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
-            $table->string('wilayah');
-            $table->string('mesin');
-            $table->integer('qty');
-            $table->string('pagu');
-            $table->date('kontrak')->nullable();
-            $table->string('keterangan')->nullable();
+            $table->foreignId('bast_id');
+            $table->foreignId('status_bast_id');
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sales_tasks');
+        Schema::dropIfExists('bast_details');
     }
 };

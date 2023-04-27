@@ -53,6 +53,20 @@ module.exports = {
                     "0%": { top: "100%" },
                     "100%": { top: "0" },
                 },
+                warning: {
+                    "0%": {
+                        "border-color": "#ff0000",
+                        "box-shadow": "0 0 5px #ff0000",
+                    },
+                    "100%": {
+                        "border-color": "#fff",
+                        "box-shadow": "none",
+                    },
+                },
+                pulsecepat: {
+                    "0%, 100%": { opacity: 1 },
+                    "50%": { opacity: 0.5 },
+                },
             },
             animation: {
                 wiggle: "wiggle 1s ease-in-out infinite",
@@ -64,6 +78,9 @@ module.exports = {
                 naiklambatbanget2: "naik2 55s linear infinite",
                 naikterus: "naikterus 10s linear infinite",
                 naikterus2: "naikterus2 10s linear infinite",
+                warning: "warning 0.5s ease-in-out alternate infinite",
+                pulsecepat:
+                    "pulsecepat 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
             },
         },
     },

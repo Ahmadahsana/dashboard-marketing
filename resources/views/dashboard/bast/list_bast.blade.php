@@ -10,7 +10,7 @@
             <div
                 class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent"
             >
-            <a  class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all bg-transparent rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 hover:shadow-xs active:opacity-85 hover:-translate-y-px tracking-tight-rem bg-x-25" href="/tambah_task_sales"> <i class="fas fa-plus"> </i>&nbsp;&nbsp;Tambah Baru</a>
+            <a  class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all bg-transparent rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 hover:shadow-xs active:opacity-85 hover:-translate-y-px tracking-tight-rem bg-x-25" href="/tambah_bast"> <i class="fas fa-plus"> </i> Tambah Baru</a>
             </div>
                 @if (session()->has('success'))
                 
@@ -30,7 +30,7 @@
                                     </svg>
                                     <div>
                                         {{ session('success') }}
-                                        
+
                                     </div>
                                 </div>
                         </div>    
@@ -55,55 +55,35 @@
                                 <th
                                     class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
-                                    Nama
+                                    NO POI
                                 </th>
                                 <th
                                     class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
-                                    Judul
+                                    Nama Mesin
                                 </th>
-                                <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
-                                >
-                                    Deskripsi
-                                </th>
-                                <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
-                                >
-                                    Deadline
-                                </th>
-                                <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
-                                >
+                                <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                     Status
                                 </th>
+                                
+                                
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($task_sales as $task)
+                            @foreach ($data_bast as $bast)
                                 
                             
                             <tr>
-                                <td
-                                    class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
-                                >
-                                    <span
-                                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
-                                        >{{ $loop->iteration }}</span
+                                <td class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent" >
+                                    <span class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400" >{{ $loop->iteration }}</span
                                     >
                                 </td>
-                                <td
-                                    class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
-                                >
+                                <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent" >
                                     <div class="flex px-2 py-1">
                                         
-                                        <div
-                                            class="flex flex-col justify-center"
-                                        >
-                                            <h6
-                                                class="mb-0 text-sm leading-normal dark:text-white"
-                                            >
-                                                {{ $task->user_id }}
+                                        <div class="flex flex-col justify-center" >
+                                            <h6 class="mb-0 text-sm leading-normal dark:text-white" >
+                                                {{ $bast->no_poi }}
                                             </h6>
                                         </div>
                                     </div>
@@ -114,34 +94,21 @@
                                     <p
                                         class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80"
                                     >
-                                        {{ $task->judul }}
+                                        {{ $bast->barang }}
                                     </p>
                                 </td>
                                 <td
-                                    class="p-2 text-sm leading-normal  align-middle bg-transparent border-b dark:border-white/40  shadow-transparent"
+                                    class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
                                 >
-                                        <span class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
-                                        {{ $task->deskripsi }}
-                                        </span>
-                                </td>
-                                <td
-                                    class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
-                                >
-                                    <span
+                                        <span
                                         class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
-                                        >{{ $task->deadline }}</span
+                                        >{{ $bast->status->nama }}</span
                                     >
                                 </td>
-                                <td
-                                    class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
-                                >
-                                    <span
-                                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
-                                        >{{ $task->status }}</span
-                                    >
-                                </td>
+                                
+                                
                                 <td class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent" >
-                                                    <a href="/edit_task_sales/{{ $task->id }}"
+                                                    <a href="/edit_bast/{{ $bast->id }}"
                                                         class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-blue-400 border-2 px-3 py-1 rounded-md border-blue-700 mr-2">
                                                         Edit
                                                     </a>

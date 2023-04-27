@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('basts', function (Blueprint $table) {
+        Schema::create('budgets', function (Blueprint $table) {
             $table->id();
-            $table->string('no_poi');
-            $table->string('barang');
-            $table->date('kontrak')->nullable();
-            $table->date('kirim')->nullable();
-            $table->date('sampai')->nullable();
-            $table->date('pasang')->nullable();
-            $table->date('uji_coba')->nullable();
-            $table->date('bast')->nullable();
+            $table->string('bulan');
+            $table->string('target')->nullable()->default(0);
+            $table->string('realisasi')->nullable()->default(0);
             $table->timestamps();
         });
     }
@@ -34,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('basts');
+        Schema::dropIfExists('budgets');
     }
 };
