@@ -12,6 +12,29 @@
             >
             <a  class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all bg-transparent rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 hover:shadow-xs active:opacity-85 hover:-translate-y-px tracking-tight-rem bg-x-25" href="/tambah_katalog"> <i class="fas fa-plus"> </i>&nbsp;&nbsp;Tambah Katalog</a>
             </div>
+            @if (session()->has('success'))
+                
+                        <div class="max-w-lg mx-auto">
+                                <div class="flex bg-green-100 rounded-lg p-4 mb-4 text-sm text-green-700" role="alert" >
+                                    <svg
+                                        class="w-5 h-5 inline mr-3"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                            clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                    <div>
+                                        {{ session('success') }}
+                                        
+                                    </div>
+                                </div>
+                        </div>    
+            @endif
             <div
                 class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent"
             >
@@ -64,11 +87,11 @@
                                 >
                                     deltime
                                 </th>
-                                <th
+                                {{-- <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
                                     opsi
-                                </th>
+                                </th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -149,15 +172,20 @@
                                         >{{ $katalog->deltime }}</span
                                     >
                                 </td>
-                                <td
-                                    class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
-                                >
-                                    <a
-                                        href="javascript:;"
-                                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
-                                    >
+                                <td class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent" >
+                                    <form action="/delete_katalog" method="POST">
+                                        @csrf
+                                    <a href="/edit_katalog/{{ $katalog->id }}"
+                                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-blue-400 border-2 px-3 py-1 rounded-md border-blue-700 mr-2">
                                         Edit
                                     </a>
+                                        <input type="hidden" name="id" value="{{ $katalog->id }}">
+                                        <button type="submit" href="javascript:;" onclick="javascript: return confirm('anda yakin hapus?')" 
+                                            class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-red-400 border-2 px-3 py-1 rounded-md border-red-600">
+                                            Hapus
+                                        </button>
+                                    </form>
+                                    
                                 </td>
                             </tr>
                             @endforeach

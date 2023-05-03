@@ -29,7 +29,7 @@
                                         ></path>
                                     </svg>
                                     <div>
-                                        Data berhasil diinput
+                                        {{ session('success') }}
                                         
                                     </div>
                                 </div>
@@ -40,8 +40,8 @@
             >
                 <h6 class="dark:text-white">List Inquiry</h6>
             </div>
-            <div class="flex-auto px-0 pt-0 pb-2">
-                <div class="p-0 overflow-x-auto">
+            <div class="flex-auto px-0 pt-0 pb-2  w-full">
+                <div class="p-0 overflow-x-auto  w-full">
                     <table
                         class="items-center w-full mb-0 align-top border-collapse dark:border-white/40 text-slate-500"
                     >
@@ -55,17 +55,27 @@
                                 <th
                                     class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
-                                    Judul
+                                    No LPP
+                                </th>
+                                <th
+                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
+                                >
+                                    Proyek
                                 </th>
                                 <th
                                     class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
-                                    Sales
+                                    Customer
                                 </th>
                                 <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
-                                    Jenis instansi
+                                    Lokasi
+                                </th>
+                                <th
+                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
+                                >
+                                    Sales
                                 </th>
                                 <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
@@ -75,7 +85,7 @@
                                 <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
-                                    Alamat instansi
+                                    Deadline
                                 </th>
                                 <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
@@ -108,7 +118,7 @@
                                             <h6
                                                 class="mb-0 text-sm leading-normal dark:text-white"
                                             >
-                                                {{ $Inquiry->judul }}
+                                                {{ $Inquiry->no_lpp }}
                                             </h6>
                                         </div>
                                     </div>
@@ -119,15 +129,31 @@
                                     <p
                                         class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80"
                                     >
-                                        {{ $Inquiry->sales }}
+                                        {{ $Inquiry->proyek }}
                                     </p>
                                 </td>
                                 <td
-                                    class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
+                                    class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b dark:border-white/40 shadow-transparent"
                                 >
                                         <span
                                         class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
-                                        >{{ $Inquiry->jenis_instansi }}</span
+                                        >{{ $Inquiry->customer }}</span
+                                    >
+                                </td>
+                                <td
+                                    class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 shadow-transparent"
+                                >
+                                    <span
+                                        class="text-xs font-semibold  whitespace-normal dark:text-white dark:opacity-80 text-slate-400"
+                                        >{{ $Inquiry->alamat }}</span
+                                    >
+                                </td>
+                                <td
+                                    class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
+                                >
+                                    <span
+                                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
+                                        >{{ $Inquiry->sales }}</span
                                     >
                                 </td>
                                 <td
@@ -143,26 +169,29 @@
                                 >
                                     <span
                                         class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
-                                        >{{ $Inquiry->alamat_instansi }}</span
+                                        >{{ $Inquiry->deadline }}</span
                                     >
                                 </td>
-                                <td
-                                    class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
+                                <td class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
                                 >
                                         <span
-                                        class=" @if($Inquiry->status == 'kontrak') bg-blue-600 text-white @elseif($Inquiry->status == 'deal') bg-teal-600 text-white @elseif($Inquiry->status == 'nego') bg-orange-300 text-orange-900 @endif px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none "
-                                        >{{ $Inquiry->status }}</span
+                                        class=" @if($Inquiry->status == '2') bg-blue-600 text-white @elseif($Inquiry->status == '3') bg-teal-600 text-white @elseif($Inquiry->status == '4') bg-red-400 text-white @else bg-orange-300 text-orange-900  @endif px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none "
+                                        >{{ $Inquiry->status_inquiry->status }}</span
                                     >
                                 </td>
                                 <td class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent" >
-                                                    <a href="javascript:;"
+                                                    <form action="/delete_inquiry" method="POST">
+                                                        @csrf
+                                                    <a href="/edit_inquiry/{{ $Inquiry->id }}"
                                                         class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-blue-400 border-2 px-3 py-1 rounded-md border-blue-700 mr-2">
                                                         Edit
                                                     </a>
-                                                    <a href="javascript:;" 
-                                                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-red-400 border-2 px-3 py-1 rounded-md border-red-600">
-                                                        Hapus
-                                                    </a>
+                                                        <input type="hidden" name="id" value="{{ $Inquiry->id }}">
+                                                        <button type="submit" href="javascript:;" onclick="javascript: return confirm('anda yakin hapus?')" 
+                                                            class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-red-400 border-2 px-3 py-1 rounded-md border-red-600">
+                                                            Hapus
+                                                        </button>
+                                                    </form>
                                                     
                                                     
                                 </td>
@@ -181,34 +210,9 @@
 
 
 <script>
-    const modal = document.querySelector('.main-modal');
-    const closeButton = document.querySelectorAll('.modal-close');
-
-    const modalClose = () => {
-        modal.classList.remove('fadeIn');
-        modal.classList.add('fadeOut');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 500);
+    function konfirmasi() {
+      var hasil = confirm("Apakah Anda yakin ingin melanjutkan?");
+      hasil ? alert("Anda telah mengkonfirmasi") : alert("Anda membatalkan aksi.");
     }
-
-    const openModal = () => {
-        modal.classList.remove('fadeOut');
-        modal.classList.add('fadeIn');
-        modal.style.display = 'flex';
-    }
-
-    for (let i = 0; i < closeButton.length; i++) {
-
-        const elements = closeButton[i];
-
-        elements.onclick = (e) => modalClose();
-
-        modal.style.display = 'none';
-
-        window.onclick = function (event) {
-            if (event.target == modal) modalClose();
-        }
-    }
-</script>
+    </script>
 @endsection

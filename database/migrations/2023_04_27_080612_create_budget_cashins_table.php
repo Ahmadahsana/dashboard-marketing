@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('budgets', function (Blueprint $table) {
+        Schema::create('budget_cashins', function (Blueprint $table) {
             $table->id();
-            $table->string('bulan');
-            $table->string('target')->nullable()->default(0);
-            $table->string('realisasi')->nullable()->default(0);
+            $table->foreignId('budget_id');
+            $table->string('customer');
+            $table->string('alasan_budget');
+            $table->bigInteger('nilai');
+            $table->date('tanggal');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('budgets');
+        Schema::dropIfExists('budget_cashins');
     }
 };

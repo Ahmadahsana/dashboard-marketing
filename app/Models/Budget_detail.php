@@ -5,13 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Inquiry extends Model
+class Budget_detail extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-
-    public function status_inquiry()
-    {
-        return $this->belongsTo(Status_inquiry::class, 'status', 'id');
-    }
 }

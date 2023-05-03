@@ -7,6 +7,7 @@ use App\Models\Inquiry;
 use App\Models\Sales;
 use Illuminate\Http\Request;
 use App\Imports\KatalogImport;
+use App\Models\Status_inquiry;
 use Maatwebsite\Excel\Facades\Excel;
 
 class InquiryController extends Controller
@@ -48,13 +49,14 @@ class InquiryController extends Controller
         // return $request->all();
 
         $data = [
+            'no_lpp' => $request->lpp,
             'sales' => $request->sales,
-            'judul' => $request->judul,
-            'jenis_instansi' => $request->jenis_instansi,
+            'proyek' => $request->proyek,
+            'customer' => $request->customer,
+            'alamat' => $request->alamat,
             'tgl_prospek' => $request->tgl_prospek,
-            'alamat_instansi' => $request->alamat,
-            'divisi' => $request->divisi,
-            'status' => $request->status,
+            'deadline' => $request->deadline,
+            'status' => '1',
         ];
 
         Inquiry::create($data);
@@ -79,9 +81,17 @@ class InquiryController extends Controller
      * @param  \App\Models\Inquiry  $inquiry
      * @return \Illuminate\Http\Response
      */
-    public function edit(Inquiry $inquiry)
+    public function edit($id)
     {
-        //
+        $inquiry = Inquiry::find($id);
+        $sales = Sales::all();
+        $status_inquiry = Status_inquiry::all();
+
+        return view('dashboard.inquiry.edit_inquiry', [
+            'inquiry' => $inquiry,
+            'list_sales' => $sales,
+            'list_status_inquiry' => $status_inquiry,
+        ]);
     }
 
     /**
@@ -91,9 +101,24 @@ class InquiryController extends Controller
      * @param  \App\Models\Inquiry  $inquiry
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inquiry $inquiry)
+    public function update(Request $request)
     {
-        //
+        // return $request->all();
+
+        $data_update = [
+            'no_lpp' => $request->lpp,
+            'sales' => $request->sales,
+            'proyek' => $request->proyek,
+            'customer' => $request->customer,
+            'alamat' => $request->alamat,
+            'tgl_prospek' => $request->tgl_prospek,
+            'deadline' => $request->deadline,
+            'status' => $request->status,
+        ];
+
+        Inquiry::where('id', $request->id)->update($data_update);
+
+        return redirect('list_inquiry')->with('success', 'berhasil update');
     }
 
     /**
@@ -102,9 +127,10 @@ class InquiryController extends Controller
      * @param  \App\Models\Inquiry  $inquiry
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Inquiry $inquiry)
+    public function destroy(Request $request)
     {
-        //
+        Inquiry::where('id', $request->id)->delete();
+        return redirect('list_inquiry')->with('success', 'berhasil delete');
     }
 
     public function bulk_insert(Request $request)

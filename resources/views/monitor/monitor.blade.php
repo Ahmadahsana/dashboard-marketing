@@ -4,7 +4,8 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Monitor</title>
+        <meta http-equiv="refresh" content="1200" />
+        <title>Monitor Marketing</title>
         <link href="monitor/dist/output.css" rel="stylesheet" />
     </head>
     <body
@@ -61,7 +62,7 @@
                             <span class="font-bold text-lg">E-Katalog</span>
                         </div>
                         <div class="h-6/7 relative w-full overflow-y-hidden">
-                            <ul class="p-4 absolute w-full animate-naik">
+                            <ul class="p-4 absolute w-full animate-naik  @if(count($list_katalog) > 4) animate-naik @endif">
                                 @foreach ($list_katalog as $katalog)
                                 
                                 <li class="bg-slate-200 p-2 rounded-sm mb-2 shadow-sm" >
@@ -96,7 +97,7 @@
                                 
                             </ul>
 
-                            <ul class="p-4 absolute w-full animate-naik2">
+                            <ul class="p-4 absolute w-full  @if(count($list_katalog) > 4) animate-naik2 @endif">
                                 @foreach ($list_katalog as $katalog)
                                 
                                 <li class="bg-slate-200 p-2 rounded-sm mb-2 shadow-sm" >
@@ -156,7 +157,11 @@
                             <div class="text-center">
                                 <p>Target</p>
                                 <p class="text-xl font-bold">
-                                    Rp. <span>200.000.000</span>
+                                    Rp. <span> @if (isset($budget))
+                                                    {{ number_format($budget->target, 0, ',', '.') }}
+                                                @else
+                                                    0
+                                                @endif </span>
                                 </p>
                             </div>
                         </div>
@@ -164,7 +169,11 @@
                             <div class="text-center">
                                 <p>Realisasi</p>
                                 <p class="text-xl font-bold">
-                                    Rp. <span>60.000.000</span>
+                                    Rp. <span>@if (isset($budget))
+                                        {{ number_format($budget->realisasi, 0, ',', '.') }}
+                                    @else
+                                        0
+                                    @endif</span>
                                 </p>
                             </div>
                         </div>
@@ -181,7 +190,7 @@
                         <span class="font-bold text-lg">BAST</span>
                     </div>
                     <div class="overflow-y-hidden h-6/7 relative">
-                        <ul class="p-4 w-full absolute animate-naik">
+                        <ul class="p-4 w-full absolute @if(count($list_bast) > 4) animate-naik @endif ">
                             @foreach ($list_bast as $bast)
 
                             <li class="bg-slate-200 p-2 mb-2 rounded-sm">
@@ -244,7 +253,7 @@
                             </li>
                             @endforeach
                         </ul>
-                        <ul class="p-4 w-full absolute animate-naik2">
+                        <ul class="p-4 w-full absolute  @if(count($list_bast) > 4) animate-naik2 @endif">
                             @foreach ($list_bast as $bast)
 
                             <li class="bg-slate-200 p-2 mb-2 rounded-sm">
@@ -428,7 +437,7 @@
                             <span class="font-bold text-lg">Task</span>
                         </div>
                         <div class="overflow-y-hidden h-6/7 relative">
-                            <ul class="p-4 absolute w-full animate-naiklambat grid grid-cols-2 gap-2" >
+                            <ul class="p-4 absolute w-full  @if(count($list_task) > 5) animate-naiklambat @endif grid grid-cols-2 gap-2" >
 
                                 
                                 @foreach ($list_task as $sales)
@@ -460,7 +469,7 @@
                                 </li>
                                 @endforeach
                             </ul>
-                            <ul class="p-4 absolute w-full animate-naiklambat2 grid grid-cols-2 gap-2" >
+                            <ul class="p-4 absolute w-full @if(count($list_task) > 5) animate-naiklambat2 @endif grid grid-cols-2 gap-2" >
                                 @foreach ($list_task as $sales)
                                 
                                 <li class="bg-slate-200 rounded-sm mb-2 mr-2 shadow-sm relative flex overflow-hidden w-full">
@@ -506,67 +515,108 @@
                             <span class="font-bold text-lg">Inquiry</span>
                         </div>
                         <div class="overflow-y-hidden h-6/7 relative">
-                            <ul class="p-4 absolute w-full animate-naiklambat" >
+                            <ul class="p-4 absolute w-full  @if(count($list_inquiry) > 3) animate-naiklambat @endif" >
                                 @foreach ($list_inquiry as $inquiry)
-                                <li class="bg-slate-200 p-2 rounded-sm mb-2 shadow-sm relative" >
-                                <div class="flex justify-between">
-                                    <div>
-                                        <h1 class="text-md font-bold">
-                                            {{ $inquiry->judul }}
-                                        </h1>
-                                        <p class="font-semibold">
-                                            {{ $inquiry->sales }}
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <div class="flex justify-end text-center" >
-                                            <p class="py-1 px-3 @if($inquiry->status == 'Pending') bg-orange-300 text-orange-900 @elseif($inquiry->status == 'Proses') bg-teal-600 text-white @elseif($inquiry->status == 'Order') bg-blue-600 text-white @elseif($inquiry->status == 'Gagal') bg-red-500 text-white @elseif($inquiry->status == 'DLL') bg-gray-600 text-white @endif text-center text-sm rounded-lg "
-                                            >
-                                                {{ $inquiry->status }}
-                                            </p>
+                                <li class="bg-slate-200 p-2 rounded-sm mb-2 shadow-sm" >
+                                    <div class="flex flex-col">
+                                        <div class="font-semibold">
+                                            {{ $inquiry->no_lpp }}
                                         </div>
-                                        <p
-                                            class="text-gray-600 font-bold absolute bottom-0 right-0 p-2"
-                                        >
-                                            {{ $inquiry->tgl_prospek }}
-                                        </p>
+                                        <div class="flex justify-between">
+                                            <div class="text-blue-500">
+                                                {{ $inquiry->proyek }}
+                                            </div>
+                                            <div class="text-violet-500 font-semibold" >
+                                                {{ $inquiry->sales }}
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-row">
+                                            <div class="basis-4/5 text-sm">
+                                                {{ $inquiry->customer }} ( {{ $inquiry->alamat }} )
+                                            </div>
+                                            <div class="basis-1/5">
+                                                <span class="px-1 bg-orange-300 rounded-md text-xs flex" >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    </svg>
+                                                    {{ $inquiry->deadline }}
+                                                </span >
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <div class="flex items-end">
+                                                <div class="px-1 bg-orange-700 text-white rounded-md text-sm flex" >
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1 text-xs">
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"
+                                                        />
+                                                    </svg>
+                                                    {{ $inquiry->tgl_prospek }}
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="px-2 py-1 @if($inquiry->status == '2') bg-blue-600 text-white @elseif($inquiry->status == '3') bg-teal-600 text-white @elseif($inquiry->status == '4') bg-red-400 text-white @else bg-orange-300 text-orange-900  @endif mt-1 rounded-md"
+                                            >
+                                                {{ $inquiry->status_inquiry->status }}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
                                 @endforeach
                             </ul>
-                            <ul
-                                class="p-4 absolute w-full animate-naiklambat2"
-                            >
+                            <ul class="p-4 absolute w-full @if(count($list_inquiry) > 3) animate-naiklambat2 @endif" >
                                 
                             @foreach ($list_inquiry as $inquiry)
-                            <li
-                                class="bg-slate-200 p-2 rounded-sm mb-2 shadow-sm relative"
-                            >
-                                <div class="flex justify-between">
-                                    <div>
-                                        <h1 class="text-md font-bold">
-                                            {{ $inquiry->judul }}
-                                        </h1>
-                                        <p class="font-semibold">
-                                            {{ $inquiry->sales }}
-                                        </p>
+                            <li class="bg-slate-200 p-2 rounded-sm mb-2 shadow-sm" >
+                                <div class="flex flex-col">
+                                    <div class="font-semibold">
+                                        {{ $inquiry->no_lpp }}
                                     </div>
-                                    <div>
-                                        <div
-                                            class="flex justify-end text-center"
-                                        >
-                                            <p
-                                                class="py-1 px-3 @if($inquiry->status == 'Pending') bg-orange-300 text-orange-900 @elseif($inquiry->status == 'Proses') bg-teal-600 text-white @elseif($inquiry->status == 'Order') bg-blue-600 text-white @elseif($inquiry->status == 'Gagal') bg-red-500 text-white @elseif($inquiry->status == 'DLL') bg-gray-600 text-white @endif text-center text-sm rounded-lg "
-                                            >
-                                                {{ $inquiry->status }}
-                                            </p>
+                                    <div class="flex justify-between">
+                                        <div class="text-blue-500">
+                                            {{ $inquiry->proyek }}
                                         </div>
-                                        <p
-                                            class="text-gray-600 font-bold absolute bottom-0 right-0 p-2"
+                                        <div class="text-violet-500 font-semibold" >
+                                            {{ $inquiry->sales }}
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-row">
+                                        <div class="basis-4/5 text-sm">
+                                            {{ $inquiry->customer }} ( {{ $inquiry->alamat }} )
+                                        </div>
+                                        <div class="basis-1/5">
+                                            <span class="px-1 bg-orange-300 rounded-md text-xs flex" >
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                                {{ $inquiry->deadline }}
+                                            </span >
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <div class="flex items-end">
+                                            <div class="px-1 bg-orange-700 text-white rounded-md text-sm flex" >
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1 text-xs">
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"
+                                                    />
+                                                </svg>
+                                                {{ $inquiry->tgl_prospek }}
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="px-2 py-1 @if($inquiry->status == '2') bg-blue-600 text-white @elseif($inquiry->status == '3') bg-teal-600 text-white @elseif($inquiry->status == '4') bg-red-400 text-white @else bg-orange-300 text-orange-900  @endif mt-1 rounded-md"
                                         >
-                                            {{ $inquiry->tgl_prospek }}
-                                        </p>
+                                            {{ $inquiry->status_inquiry->status }}
+                                        </div>
                                     </div>
                                 </div>
                             </li>

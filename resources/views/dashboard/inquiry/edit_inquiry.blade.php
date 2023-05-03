@@ -8,15 +8,16 @@
             <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
               
              
-             <form action="/simpan_inquiry" method="post">
+             <form action="/update_inquiry" method="post">
                 @csrf
+                <input type="hidden" name="id" value="{{ $inquiry->id }}">
               <div class="flex-auto p-6">
                 <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">Tambah Inquiry</p>
                 <div class="flex flex-wrap -mx-3">
                   <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                     <div class="mb-4">
                       <label for="lpp" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">NO LPP</label>
-                      <input type="text" name="lpp" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                      <input type="text" name="lpp" value="{{ $inquiry->no_lpp }}" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                     </div>
                   </div>
                   <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
@@ -25,7 +26,7 @@
                       <select id="sales" name="sales" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
                         <option selected disabled value="">Pilih sales</option>
                         @foreach ($list_sales as $sales)
-                            <option>{{ $sales->nama }}</option>
+                            <option @if ($sales->nama == $inquiry->sales) selected @endif>{{ $sales->nama }}</option>
                         @endforeach
                       </select>
                     </div>
@@ -33,13 +34,13 @@
                   <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                     <div class="mb-4">
                       <label for="proyek" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Proyek</label>
-                      <input type="text" name="proyek" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                      <input type="text" name="proyek" value="{{ $inquiry->proyek }}" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                     </div>
                   </div>
                   <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                     <div class="mb-4">
                       <label for="customer" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Customer</label>
-                      <input type="text" name="customer" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                      <input type="text" name="customer" value="{{ $inquiry->customer }}" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                     </div>
                   </div>
                   
@@ -59,19 +60,30 @@
                   <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                     <div class="mb-4">
                       <label for="tgl_prospek" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Tanggal prospek</label>
-                      <input type="date" name="tgl_prospek" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                      <input type="date" name="tgl_prospek" value="{{ $inquiry->tgl_prospek }}" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                     </div>
                   </div>
                   <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                     <div class="mb-4">
                       <label for="alamat" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Alamat</label>
-                      <input type="text" name="alamat" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                      <input type="text" name="alamat" value="{{ $inquiry->alamat }}" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                     </div>
                   </div>
                   <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                     <div class="mb-4">
                       <label for="deadline" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Deadline</label>
-                      <input type="date" name="deadline" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                      <input type="date" name="deadline" value="{{ $inquiry->deadline }}" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                    </div>
+                  </div>
+                  <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+                    <div class="mb-4">
+                      <label for="deadline" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Status</label>
+                      <select id="status" name="status" required class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
+                        <option selected disabled value="">Pilih status</option>
+                        @foreach ($list_status_inquiry as $status)
+                            <option @if ($status->id == $inquiry->status) selected @endif value="{{ $status->id }}">{{ $status->status }}</option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
                   {{-- <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
@@ -112,7 +124,7 @@
         </div>
 
 
-        <div class="w-full max-w-full px-3 shrink-0 mt-10">
+        {{-- <div class="w-full max-w-full px-3 shrink-0 mt-10">
             <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
               
              
@@ -134,41 +146,9 @@
               </div>
              </form>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 
 
-
-<script>
-    const modal = document.querySelector('.main-modal');
-    const closeButton = document.querySelectorAll('.modal-close');
-
-    const modalClose = () => {
-        modal.classList.remove('fadeIn');
-        modal.classList.add('fadeOut');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 500);
-    }
-
-    const openModal = () => {
-        modal.classList.remove('fadeOut');
-        modal.classList.add('fadeIn');
-        modal.style.display = 'flex';
-    }
-
-    for (let i = 0; i < closeButton.length; i++) {
-
-        const elements = closeButton[i];
-
-        elements.onclick = (e) => modalClose();
-
-        modal.style.display = 'none';
-
-        window.onclick = function (event) {
-            if (event.target == modal) modalClose();
-        }
-    }
-</script>
 @endsection

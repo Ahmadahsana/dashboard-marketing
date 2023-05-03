@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('inquiries', function (Blueprint $table) {
             $table->id();
+            $table->string('no_lpp');
             $table->string('sales');
-            $table->string('judul');
-            $table->string('jenis_instansi');
+            $table->string('proyek');
+            $table->string('customer');
+            $table->string('alamat');
             $table->date('tgl_prospek');
-            $table->string('alamat_instansi');
-            $table->string('divisi');
+            $table->date('deadline');
             $table->string('status');
             $table->timestamps();
         });

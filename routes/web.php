@@ -33,7 +33,10 @@ Route::get('/', [LoginController::class, 'menu_awal'])->middleware('auth');
 Route::get('/dashboard_katalog', [KatalogController::class, 'index'])->middleware('auth');
 Route::get('/list_katalog', [KatalogController::class, 'list'])->middleware('auth');
 Route::get('/tambah_katalog', [KatalogController::class, 'tambah'])->middleware('auth');
+Route::get('/edit_katalog/{id}', [KatalogController::class, 'edit'])->middleware('auth');
 Route::post('/simpan_katalog', [KatalogController::class, 'store'])->middleware('auth');
+Route::post('/update_katalog', [KatalogController::class, 'update'])->middleware('auth');
+Route::post('/delete_katalog', [KatalogController::class, 'destroy'])->middleware('auth');
 Route::post('/insert_katalog_bulk', [KatalogController::class, 'bulk_insert'])->middleware('auth');
 
 Route::get('/video', [KatalogController::class, 'video'])->middleware('auth');
@@ -45,6 +48,9 @@ Route::post('/cari_poi', [PoiController::class, 'cari_poi']);
 // inquiry
 Route::get('/list_inquiry', [InquiryController::class, 'index'])->middleware('auth');
 Route::get('/tambah_inquiry', [InquiryController::class, 'create'])->middleware('auth');
+Route::get('/edit_inquiry/{id}', [InquiryController::class, 'edit'])->middleware('auth');
+Route::post('/update_inquiry', [InquiryController::class, 'update'])->middleware('auth');
+Route::post('/delete_inquiry', [InquiryController::class, 'destroy'])->middleware('auth');
 Route::post('/simpan_inquiry', [InquiryController::class, 'store'])->middleware('auth');
 Route::post('/insert_inquiry_bulk', [InquiryController::class, 'bulk_insert'])->middleware('auth');
 
@@ -62,6 +68,12 @@ Route::get('/edit_bast/{id}', [BastController::class, 'show'])->middleware('auth
 Route::post('/tambah_bast', [BastController::class, 'store'])->middleware('auth');
 Route::post('/update_bast', [BastController::class, 'update'])->middleware('auth');
 
-// cash in
+// budget
 Route::get('/list_budget', [BudgetController::class, 'index'])->middleware('auth');
 Route::get('/tambah_budget', [BudgetController::class, 'create'])->middleware('auth');
+Route::get('/edit_budget/{id}/target', [BudgetController::class, 'edit_target'])->middleware('auth');
+Route::get('/edit_budget/{id}/realisasi', [BudgetController::class, 'edit_realisasi'])->middleware('auth');
+Route::post('/tambah_budget', [BudgetController::class, 'store'])->middleware('auth');
+Route::post('/delete_budget', [BudgetController::class, 'destroy'])->middleware('auth');
+Route::post('/update_budget', [BudgetController::class, 'update_budget'])->middleware('auth');
+Route::post('/tambah_cashin', [BudgetController::class, 'store_cashin'])->middleware('auth');

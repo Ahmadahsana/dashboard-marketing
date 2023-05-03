@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Katalog;
 use Illuminate\Http\Request;
 use App\Imports\KatalogImport;
+use App\Models\Sales;
 use Maatwebsite\Excel\Facades\Excel;
 
 class KatalogController extends Controller
@@ -52,13 +53,13 @@ class KatalogController extends Controller
             'sales' => $request->sales,
             'lokasi' => $request->lokasi,
             'nilai_kontrak' => $request->nilai,
-            'status' => $request->status,
+            'status' => strtolower($request->status),
             'deltime' => $request->deltime,
         ];
 
         Katalog::create($data);
 
-        return redirect()->back()->with('success', 'Berhasil Transfer');
+        return redirect('list_katalog')->with('success', 'berhasil insert');
     }
 
     /**
@@ -78,9 +79,14 @@ class KatalogController extends Controller
      * @param  \App\Models\Katalog  $katalog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Katalog $katalog)
+    public function edit($id)
     {
-        //
+        $katalog = Katalog::find($id);
+        $sales = Sales::all();
+        return view('dashboard.katalog.edit_katalog', [
+            'katalog' => $katalog,
+            'sales' => $sales
+        ]);
     }
 
     /**
@@ -90,9 +96,23 @@ class KatalogController extends Controller
      * @param  \App\Models\Katalog  $katalog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Katalog $katalog)
+    public function update(Request $request)
     {
-        //
+        // return $request->all();
+
+        $data = [
+            'nama_mesin' => $request->mesin,
+            'qty' => $request->qty,
+            'sales' => $request->sales,
+            'lokasi' => $request->lokasi,
+            'nilai_kontrak' => $request->nilai,
+            'status' => $request->status,
+            'deltime' => $request->deltime,
+        ];
+
+        Katalog::where('id', $request->id)->update($data);
+
+        return redirect('list_katalog')->with('success', 'berhasil update');
     }
 
     /**
@@ -101,14 +121,18 @@ class KatalogController extends Controller
      * @param  \App\Models\Katalog  $katalog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Katalog $katalog)
+    public function destroy(Request $request)
     {
-        //
+        Katalog::where('id', $request->id)->delete();
+        return redirect('list_katalog')->with('success', 'berhasil delete');
     }
 
     public function tambah()
     {
-        return view('dashboard.katalog.tambah_katalog');
+        $sales = Sales::all();
+        return view('dashboard.katalog.tambah_katalog', [
+            'sales' => $sales
+        ]);
     }
 
     public function bulk_insert(Request $request)

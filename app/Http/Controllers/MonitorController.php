@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Bast;
+use App\Models\Budget;
 use App\Models\Inquiry;
 use App\Models\Katalog;
 use App\Models\Sales_task;
@@ -57,6 +58,10 @@ class MonitorController extends Controller
 
         $deltime = $data_poi->pluck('DELTIME');
 
+        $budget = Budget::whereMonth('tanggal', date('m'))->first();
+
+        // dd($budget);
+
         $dataWithSelisih = $deltime->map(function ($item) {
             // Menghitung selisih tanggal
             $selisih = Carbon::parse($item)->diffInDays(Carbon::now());
@@ -78,7 +83,8 @@ class MonitorController extends Controller
             'list_bast' => $data_bast,
             'list_poi' => $data_poi,
             'selisih_poi' => $dataWithSelisih,
-            'poi_telat' => $poi_telat
+            'poi_telat' => $poi_telat,
+            'budget' => $budget
         ]);
     }
 }

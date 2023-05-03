@@ -38,7 +38,7 @@
             <div
                 class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent"
             >
-                <h6 class="dark:text-white">Task sales</h6>
+                <h6 class="dark:text-white">Budget</h6>
             </div>
             <div class="flex-auto px-0 pt-0 pb-2">
                 <div class="p-0 overflow-x-auto">
@@ -55,34 +55,25 @@
                                 <th
                                     class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
-                                    Nama
+                                    Bulan
                                 </th>
                                 <th
                                     class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
-                                    Judul
+                                    Target
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
+                                    class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
                                 >
-                                    Deskripsi
+                                    Realisasi
                                 </th>
-                                <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
-                                >
-                                    Deadline
-                                </th>
-                                <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70"
-                                >
-                                    Status
-                                </th>
+                                
                             </tr>
                         </thead>
                         <tbody>
                             
                                 
-                            
+                            @foreach ($budgets as $budget)
                             <tr>
                                 <td
                                     class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
@@ -103,7 +94,7 @@
                                             <h6
                                                 class="mb-0 text-sm leading-normal dark:text-white"
                                             >
-                                                sd
+                                                {{  date('F', strtotime($budget->tanggal)) }}
                                             </h6>
                                         </div>
                                     </div>
@@ -112,46 +103,42 @@
                                     class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
                                 >
                                     <p
-                                        class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80"
+                                        class="inline-block mx-2 mb-0 text-sm font-semibold leading-tight dark:text-white dark:opacity-80"
                                     >
-                                        gfdg
+                                    Rp {{ number_format($budget->target, 0, ',', '.') }}
                                     </p>
+                                    <a href="/edit_budget/{{ $budget->id }}/target"
+                                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-blue-400 border-2 px-3 py-1 rounded-md border-blue-700 mr-2">
+                                        Edit
+                                    </a>
                                 </td>
                                 <td
-                                    class="p-2 text-sm leading-normal  align-middle bg-transparent border-b dark:border-white/40  shadow-transparent"
+                                    class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
                                 >
-                                        <span class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
-                                            gfdgfdg
-                                        </span>
-                                </td>
-                                <td
-                                    class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
-                                >
-                                    <span
-                                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
-                                        >878kjh</span
+                                    <p
+                                        class="inline-block mx-2 mb-0 text-sm font-semibold leading-tight dark:text-white dark:opacity-80"
                                     >
+                                        Rp {{ number_format($budget->realisasi, 0, ',', '.') }}
+                                    </p>
+                                    <a href="/edit_budget/{{ $budget->id }}/realisasi"
+                                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-blue-400 border-2 px-3 py-1 rounded-md border-blue-700 mr-2">
+                                        Edit
+                                    </a>
                                 </td>
-                                <td
-                                    class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
-                                >
-                                    <span
-                                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400"
-                                        >ccds</span
-                                    >
-                                </td>
+                                
                                 <td class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent" >
-                                                    <a href="/edit_task_sales"
-                                                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-blue-400 border-2 px-3 py-1 rounded-md border-blue-700 mr-2">
-                                                        Edit
-                                                    </a>
-                                                    <a href="javascript:;" 
-                                                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-red-400 border-2 px-3 py-1 rounded-md border-red-600">
-                                                        Hapus
-                                                    </a>
+                                    <form action="/delete_budget" method="POST">
+                                        @csrf
+                                    
+                                        <input type="hidden" name="id" value="{{ $budget->id }}">
+                                        <button type="submit" href="javascript:;" onclick="javascript: return confirm('anda yakin hapus?')" 
+                                            class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-red-400 border-2 px-3 py-1 rounded-md border-red-600">
+                                            Hapus
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
-                            
+                            @endforeach
                            
                             
                         </tbody>
